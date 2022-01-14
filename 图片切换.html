@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+        <title>Document</title>
+        <link rel="stylesheet" type="text/css" href="" />
+        <style type="text/css">
+            *{
+                margin: 0;
+                padding: 0;
+            }
+            #outer{
+                width: 500px;
+                margin: 0 auto;
+                padding: 10px;
+                background-color: #bfa;
+                text-align: center;
+            }
+        </style>
+    </head>
+    <style type="text/css"></style>
+    <body>
+        <div id="outer">
+            <p id="info"></p>
+            <img src="img/001.jpg" width="500px" height="300px" alt="001" >
+            <button id="up">上一张</button>
+            <button id="down">下一张</button>
+        </div>
+    </body>
+    <script type="text/javascript" charset="utf-8">
+        window.onload = function(){
+            var up = document.getElementById('up');
+            var down = document.getElementById('down');
+            var img = document.getElementsByTagName('img')[0];
+            var imgarr = ["img/001.jpg","img/002.jpg","img/003.jpg","img/004.jpg","img/005.jpg"];
+            var imgindex = 0;
+            var info = document.getElementById('info');
+            
+            up.onclick = function(){
+                imgindex--;
+                if(imgindex<0){
+                    imgindex = imgarr.length-1;
+                }
+                img.src = imgarr[imgindex];
+                info.innerHTML = '一共'+imgarr.length+'张图片，当前第'+(imgindex+1)+'张';
+            };
+            down.onclick = function(){
+                imgindex++;
+                if(imgindex>imgarr.length-1){
+                    imgindex = 0;
+                }
+                img.src = imgarr[imgindex];
+                info.innerHTML = '一共'+imgarr.length+'张图片，当前第'+(imgindex+1)+'张';
+            };
+            
+        };
+        
+    </script>
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+        <title>Document</title>
+        <link rel="stylesheet" type="text/css" href="" />
+    </head>
+    <style type="text/css"></style>
+    <body>
+        <div>
+            <span>你爱好的运动是？<input type="checkbox" name="choice" id="allchoice" > 全选/全不选</span>
+            <br>
+            <input type="checkbox" name="item1" value="football">足球
+            <input type="checkbox" name="item1" value="basketball">篮球球
+            <input type="checkbox" name="item1" value="badminton">羽毛球
+            <input type="checkbox" name="item1" value="tabletennis">乒兵球
+            <br>
+            <button id="allchoicebtn">全选</button>
+            <button id="unallchoicebtn">全不选</button>
+            <button id="invertbtn">反选</button>
+            <button id="sendbtn">提交</button>
+        </div>
+    </body>
+    <script type="text/javascript" charset="utf-8">
+        var item1 = document.getElementsByName('item1');
+        var allchoice = document.getElementById('allchoice');
+        var allchoicebtn = document.getElementById('allchoicebtn');
+        var unallchoicebtn = document.getElementById('unallchoicebtn');
+        var invertbtn = document.getElementById('invertbtn');
+        var sendbtn = document.getElementById('sendbtn');
+        function myclick(idstr){
+
+        };
+        
+        // allchoice.checked = false;
+        allchoice.onclick = function () { 
+            //第一次点击为全选
+            // allchoice.checked = !allchoice.checked;
+            for(var i = 0 ; i < item1.length ; i++){
+                    item1[i].checked = this.checked;
+            }
+            
+         };
+
+        
+        
+        allchoicebtn.onclick = function(){
+            for(var i = 0 ; i < item1.length ; i++){
+                item1[i].checked = true;
+            }
+            allchoice.checked = true;
+        };
+         
+
+        
+        unallchoicebtn.onclick = function(){
+            for(var i = 0 ; i < item1.length ; i++){
+                item1[i].checked = false;
+            }
+            allchoice.checked = false;
+        };
+        
+      
+        invertbtn.onclick = function(){
+            allchoice.checked = true;
+            for(var i = 0 ; i < item1.length ; i++){
+                /* if(item1[i].checked){
+                    item1[i].checked = false;
+                }else{
+                    item1[i].checked = true;
+                } */
+                item1[i].checked = !item1[i].checked;
+                if(!item1[i].checked){
+                    allchoice.checked = false;
+                }
+                
+            }
+            //判断4个item1的状态
+            
+            
+            
+        };
+        
+        
+        sendbtn.onclick = function(){
+            for(var i = 0 ; i < item1.length ; i++){
+                if(item1[i].checked){
+                    console.log(item1[i].value);
+                }
+                 
+            }
+        };
+
+        
+        //给四个item1绑定点击函数
+        for(var i = 0 ; i < item1.length ; i++){
+            item1[i].onclick = function(){
+                allchoice.checked = true;
+                for(var j = 0 ; j< item1.length ; j++){
+                    if(!item1[j].checked){
+                        allchoice.checked = false;
+                        break;
+                    }
+                
+                }
+            };
+        }
+        
+
+    </script>
+</html>
